@@ -23,6 +23,7 @@ show_menu() {
     echo "2. Debian 11"
     echo "3. Debian 10"
     echo "4. Debian 9"
+    echo "5. kali"
     echo "------------------------"
     echo "11. Ubuntu 24.04"
     echo "12. Ubuntu 22.04"
@@ -49,28 +50,31 @@ show_menu() {
 reinstall_system() {
     case $1 in
         1)  # Debian 12
-            bash InstallNET.sh -debian 12
+            bash installnet.sh -debian 12
             ;;
         2)  # Debian 11
-            bash InstallNET.sh -debian 11
+            bash installnet.sh -debian 11
             ;;
         3)  # Debian 10
-            bash InstallNET.sh -debian 10
+            bash installnet.sh -debian 10
             ;;
         4)  # Debian 9
-            bash InstallNET.sh -debian 9
+            bash installnet.sh -debian 9
+            ;;
+        5)  # kali
+            bash installnet.sh -kali
             ;;
         11) # Ubuntu 24.04
-            bash InstallNET.sh -ubuntu 24.04
+            bash installnet.sh -ubuntu 24.04
             ;;
         12) # Ubuntu 22.04
-            bash InstallNET.sh -ubuntu 22.04
+            bash installnet.sh -ubuntu 22.04
             ;;
         13) # Ubuntu 20.04
-            bash InstallNET.sh -ubuntu 20.04
+            bash installnet.sh -ubuntu 20.04
             ;;
         14) # Ubuntu 18.04
-            bash InstallNET.sh -ubuntu 18.04
+            bash installnet.sh -ubuntu 18.04
             ;;
         21) # Rocky Linux 9
             bash reinstall.sh rocky
@@ -85,13 +89,13 @@ reinstall_system() {
             bash reinstall.sh almalinux 8
             ;;
         31) # CentOS 7
-            bash InstallNET.sh -centos 7
+            bash installnet.sh -centos 7
             ;;
         41) # Windows 11
-            bash InstallNET.sh -windows 11 -lang "cn"
+            bash installnet.sh -windows 11 -lang "cn"
             ;;
         42) # Windows 10
-            bash InstallNET.sh -windows 10 -lang "cn"
+            bash installnet.sh -windows 10 -lang "cn"
             ;;
         43) # Windows Server 2022
             curl -O https://massgrave.dev/windows_links.txt
@@ -99,7 +103,7 @@ reinstall_system() {
             bash reinstall.sh windows --iso="$iso_url" --image-name='Windows Server 2022'
             ;;
         44) # Windows Server 2019
-            bash InstallNET.sh -windows 2019 -lang "cn"
+            bash installnet.sh -windows 2019 -lang "cn"
             ;;
         *)
             echo "无效的选择！"
@@ -113,13 +117,13 @@ main() {
     install_dependencies
     
     # 获取安装脚本
-    if [ ! -f "InstallNET.sh" ]; then
-        wget https://github.com/hostert/s/blob/s/installnet.sh
-        chmod +x InstallNET.sh
+    if [ ! -f "installnet.sh" ]; then
+        wget https://github.com/hostert/s/releases/download/s/installnet.sh
+        chmod +x installnet.sh
     fi
     
     if [ ! -f "reinstall.sh" ]; then
-        curl -O https://github.com/hostert/s/blob/s/reinstall.sh
+        curl -O https://github.com/hostert/s/releases/download/s/reinstall.sh
         chmod +x reinstall.sh
     fi
 
